@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tracking Example</title>
+    <style>
+        .my-class {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-header">API Call Example without window.entries</h1>
+    <p class="my-class">This is a paragraph with class "my-class".</p>
+    <p class="my-class">Another paragraph with the same class.</p>
+
+    <script>
+        // API Usage Examples
+
+        // Using document.getElementById
+        const header = document.getElementById('main-header');
+        console.log('document.getElementById:', header);
+
+        // Using document.getElementsByTagName
+        const paragraphs = document.getElementsByTagName('p');
+        console.log('document.getElementsByTagName:', paragraphs.length, 'paragraphs found.');
+
+        // Using document.getElementsByClassName
+        const classElements = document.getElementsByClassName('my-class');
+        console.log('document.getElementsByClassName:', classElements.length, 'elements with class "my-class".');
+
+        // Using window.open
+        function openWindow() {
+            window.open('https://www.example.com');
+        }
+
+        // Trigger window.onload
+        window.onload = function () {
+            console.log('window.onload: The page has loaded.');
+        };
+
+        // Using document.writeln
+        document.writeln('This text is written using document.writeln.');
+
+        // Using document.open
+        document.open();
+        document.write('<p>This text was written with document.open and document.write.</p>');
+        document.close();
+
+        // Using window.eval
+        const result = window.eval('2 + 2');
+        console.log('window.eval result:', result);
+
+        // Using window.setInterval
+        const intervalId = window.setInterval(() => {
+            console.log('window.setInterval: This runs every 2 seconds.');
+        }, 2000);
+
+        // Stop the interval after 10 seconds
+        setTimeout(() => {
+            clearInterval(intervalId);
+            console.log('window.setInterval: Stopped after 10 seconds.');
+        }, 10000);
+
+        // Using document.addEventListener
+        document.addEventListener('click', () => {
+            console.log('document.addEventListener: The document was clicked.');
+        });
+    </script>
+</body>
+</html>
+
