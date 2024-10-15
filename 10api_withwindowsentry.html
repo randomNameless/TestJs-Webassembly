@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Call Example with window.entries</title>
+    <title>API Call Example with Count in window.entries</title>
     <style>
         .my-class {
             color: blue;
@@ -11,22 +11,24 @@
     </style>
 </head>
 <body>
-    <h1 id="main-header">API Call Example with window.entries</h1>
+    <h1 id="main-header">API Call Example with Count in window.entries</h1>
     <p class="my-class">This is a paragraph with class "my-class".</p>
     <p class="my-class">Another paragraph with the same class.</p>
 
     <script>
-        // Initialize window.entries to store API call logs
-        window.entries = [];
+        // Initialize window.entries to store API call counts
+        window.entries = {};
 
-        // Function to log API calls into window.entries
+        // Function to log and count API calls
         function logApiCall(apiName) {
-            const timestamp = new Date().getTime(); // Optionally log timestamp of the call
-            window.entries.push([apiName, timestamp]);
-            console.log(`API called: ${apiName} at ${timestamp}`);
+            if (!window.entries[apiName]) {
+                window.entries[apiName] = 0; // Initialize count if not set
+            }
+            window.entries[apiName] += 1; // Increment the count for each call
+            console.log(`API called: ${apiName}, Count: ${window.entries[apiName]}`);
         }
 
-        // API Usage Examples with logging
+        // API Usage Examples with Count Logging
 
         // Using document.getElementById
         const header = document.getElementById('main-header');
@@ -66,6 +68,11 @@
         const result = window.eval('2 + 2');
         logApiCall('window.eval');
         console.log('window.eval result:', result);
+        
+        // Using window.eval
+        const result2 = window.eval('2 + 3');
+        logApiCall('window.eval');
+        console.log('window.eval result:', result2);
 
         // Using window.setInterval
         const intervalId = window.setInterval(() => {
