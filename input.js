@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Call Example</title>
-    <style>
-        .my-class {
-            color: blue;
-        }
-    </style>
-</head>
-<body>
-    <h1 id="main-header">API Call Tracking Example</h1>
-    <p class="my-class">This is a paragraph with class "my-class".</p>
-    <p class="my-class">Another paragraph with the same class.</p>
-
-    <script>
-        // Initialize window.entries to store the API calls
+// Initialize window.entries to store the API calls
         window.entries = [];
 
         // Function to log API calls into window.entries
@@ -38,6 +20,3 @@
         // 3. Using document.getElementsByClassName
         const classElements = document.getElementsByClassName('my-class');
         logApiCall('document.getElementsByClassName');
-    </script>
-</body>
-</html>
