@@ -23,7 +23,7 @@
         // Function to log and count API calls in window.entries
         function logApiCall(apiName) {
             // Check if the API call is already logged in window.entries
-            let entry = window.entries.find(e => e[0] === apiName);
+            let entry = window.entries.find(e > e[0] === apiName);
             if (entry) {
                 entry[1] += 1; // Increment the count if the API is already logged
             } else {
