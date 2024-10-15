@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript API Example</title>
+    <style>
+        .my-class {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-header">Welcome to JavaScript API Demo</h1>
+    <p class="my-class">This is a paragraph with class "my-class".</p>
+    <p class="my-class">Here is another paragraph with the same class.</p>
+
+    <script>
+        // 1. window.alert
+        window.alert("Welcome to the JavaScript API Demo!");
+
+        // 2. document.getElementById
+        const headerElement = document.getElementById("main-header");
+        console.log("Element with ID 'main-header':", headerElement);
+
+        // 3. document.getElementsByTagName
+        const paragraphElements = document.getElementsByTagName("p");
+        console.log("All paragraph elements:", paragraphElements);
+
+        // 4. document.getElementsByClassName
+        const classElements = document.getElementsByClassName("my-class");
+        console.log("Elements with class 'my-class':", classElements);
+    </script>
+</body>
+</html>
+
