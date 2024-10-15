@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript API Example</title>
+    <title>API Call Example</title>
     <style>
         .my-class {
             color: blue;
@@ -11,23 +11,35 @@
     </style>
 </head>
 <body>
-    <h1 id="main-header">Welcome to JavaScript API Demo</h1>
+    <h1 id="main-header">API Call Tracking Example</h1>
     <p class="my-class">This is a paragraph with class "my-class".</p>
-    <p class="my-class">Here is another paragraph with the same class.</p>
+    <p class="my-class">Another paragraph with the same class.</p>
 
     <script>
-    	// 2. document.getElementById
-        const headerElement = document.getElementById("main-header");
-        console.log("Element with ID 'main-header':", headerElement);
+        // Initialize window.entries to store the API calls
+        window.entries = [];
 
-        // 3. document.getElementsByTagName
-        const paragraphElements = document.getElementsByTagName("p");
-        console.log("All paragraph elements:", paragraphElements);
+        // Function to log API calls into window.entries
+        function logApiCall(apiName) {
+            const timestamp = new Date().getTime();
+            window.entries.push([apiName, 1]);  // Store the API name and count 1 per call
+        }
 
-        // 4. document.getElementsByClassName
-        const classElements = document.getElementsByClassName("my-class");
-        console.log("Elements with class 'my-class':", classElements);
+        // Make and log the API calls
+
+        // 1. Using document.getElementById
+        const header = document.getElementById('main-header');
+        logApiCall('document.getElementById');
+
+        // 2. Using document.getElementsByTagName
+        const paragraphs = document.getElementsByTagName('p');
+        logApiCall('document.getElementsByTagName');
+
+        // 3. Using document.getElementsByClassName
+        const classElements = document.getElementsByClassName('my-class');
+        logApiCall('document.getElementsByClassName');
     </script>
 </body>
 </html>
+
 
