@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Call Example with Count in window.entries</title>
+    <title>API Call Example with Count in window.entries (Array)</title>
     <style>
         .my-class {
             color: blue;
@@ -11,21 +11,24 @@
     </style>
 </head>
 <body>
-    <h1 id="main-header">API Call Example with Count in window.entries</h1>
+    <h1 id="main-header">API Call Example with Count in window.entries (Array)</h1>
     <p class="my-class">This is a paragraph with class "my-class".</p>
     <p class="my-class">Another paragraph with the same class.</p>
 
     <script>
-        // Initialize window.entries to store API call counts
-        window.entries = {};
+        // Initialize window.entries as an array to store API call logs
+        window.entries = [];
 
-        // Function to log and count API calls
+        // Function to log and count API calls in window.entries
         function logApiCall(apiName) {
-            if (!window.entries[apiName]) {
-                window.entries[apiName] = 0; // Initialize count if not set
+            // Check if the API call is already logged in window.entries
+            let entry = window.entries.find(e => e[0] === apiName);
+            if (entry) {
+                entry[1] += 1; // Increment the count if the API is already logged
+            } else {
+                window.entries.push([apiName, 1]); // Initialize the count for the new API call
             }
-            window.entries[apiName] += 1; // Increment the count for each call
-            console.log(`API called: ${apiName}, Count: ${window.entries[apiName]}`);
+            console.log(`API called: ${apiName}, Count: ${entry ? entry[1] : 1}`);
         }
 
         // API Usage Examples with Count Logging
@@ -68,11 +71,6 @@
         const result = window.eval('2 + 2');
         logApiCall('window.eval');
         console.log('window.eval result:', result);
-        
-        // Using window.eval
-        const result2 = window.eval('2 + 3');
-        logApiCall('window.eval');
-        console.log('window.eval result:', result2);
 
         // Using window.setInterval
         const intervalId = window.setInterval(() => {
