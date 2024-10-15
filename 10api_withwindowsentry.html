@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Call Example with Count in window.entries (Array)</title>
+    <title>Debugging window.onload</title>
     <style>
         .my-class {
             color: blue;
@@ -11,19 +11,19 @@
     </style>
 </head>
 <body>
-    <h1 id="main-header">API Call Example with Count in window.entries (Array)</h1>
+    <h1 id="main-header">Debugging Example</h1>
     <p class="my-class">This is a paragraph with class "my-class".</p>
-    <p class="my-class">Another paragraph with the same class.</p>
 
     <script>
-    	console.log('Script executed')
+        // Log script execution
+        console.log('Script is being executed');
+
         // Initialize window.entries as an array to store API call logs
         window.entries = [];
 
         // Function to log and count API calls in window.entries
         function logApiCall(apiName) {
-            // Check if the API call is already logged in window.entries
-            let entry = window.entries.find(e > e[0] === apiName);
+            let entry = window.entries.find(e => e[0] === apiName);
             if (entry) {
                 entry[1] += 1; // Increment the count if the API is already logged
             } else {
@@ -32,66 +32,27 @@
             console.log(`API called: ${apiName}, Count: ${entry ? entry[1] : 1}`);
         }
 
-        // API Usage Examples with Count Logging
-
-        // Using document.getElementById
+        // 1. Using document.getElementById
         const header = document.getElementById('main-header');
         logApiCall('document.getElementById');
 
-        // Using document.getElementsByTagName
+        // 2. Using document.getElementsByTagName
         const paragraphs = document.getElementsByTagName('p');
         logApiCall('document.getElementsByTagName');
 
-        // Using document.getElementsByClassName
+        // 3. Using document.getElementsByClassName
         const classElements = document.getElementsByClassName('my-class');
         logApiCall('document.getElementsByClassName');
 
-        // Using window.open
-        function openWindow() {
-            logApiCall('window.open');
-            window.open('https://www.example.com');
-        }
+        // Debugging window.onload
+        window.onload = function() {
+            console.log('window.onload triggered');
+            console.trace('Trace from window.onload');  // Log stack trace
 
-        // Trigger window.onload
-        //console.log('window.onload triggered');
-        //window.onload = function () {
-           // logApiCall('window.onload');
-           // console.log('Page has fully loaded');
-        //};
-
-        // Using document.writeln
-        document.writeln('This is written using document.writeln.');
-        logApiCall('document.writeln');
-
-        // Using document.open
-        document.open();
-        logApiCall('document.open');
-        document.write('<p>This is written with document.open and document.write.</p>');
-        document.close();
-
-        // Using window.eval
-        const result = window.eval('2 + 2');
-        logApiCall('window.eval');
-        console.log('window.eval result:', result);
-
-        // Using window.setInterval
-        const intervalId = window.setInterval(() => {
-            logApiCall('window.setInterval');
-            console.log('window.setInterval: Running every 2 seconds.');
-        }, 2000);
-
-        // Stop the interval after 10 seconds
-        setTimeout(() => {
-            clearInterval(intervalId);
-            console.log('window.setInterval: Stopped after 10 seconds.');
-        }, 10000);
-
-        // Using document.addEventListener
-        document.addEventListener('click', () => {
-            logApiCall('document.addEventListener');
-            console.log('Document was clicked.');
-        });
-
+            // Check if APIs are being called again inside onload
+            const headerInsideOnload = document.getElementById('main-header');
+            logApiCall('document.getElementById (inside window.onload)');
+        };
     </script>
 </body>
 </html>
