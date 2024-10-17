@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Methods Demo</title>
+</head>
+<body>
+
+    <h1 id="header">API Methods Demo</h1>
+    <p id="paragraph">This is a test paragraph for String and Math operations.</p>
+
+    <script>
+        // 1. document.valueOf: Gets the primitive value of the document object
+        var documentValue = document.valueOf();
+        console.log("document.valueOf():", documentValue); // Outputs the document object.
+
+        // 2. document.cloneNode: Clones the document's root element (deep cloning)
+        var clonedNode = document.cloneNode(true);
+        console.log("document.cloneNode():", clonedNode); // Cloned document node.
+
+        // 3. document.contains: Check if the document contains the header element
+        var headerElement = document.getElementById('header');
+        var containsHeader = document.contains(headerElement);
+        console.log("document.contains():", containsHeader); // Outputs true if header is found in the document.
+
+        // 4. String.prototype.search: Search for a substring in a string
+        var searchString = "This is a test paragraph for String and Math operations.";
+        var searchResult = searchString.search("test");
+        console.log("String.prototype.search():", searchResult); // Outputs the index of the word 'test'.
+
+        // 5. String.prototype.charAt: Get the character at a specific index in the string
+        var charAtResult = searchString.charAt(5);
+        console.log("String.prototype.charAt():", charAtResult); // Outputs the character at index 5.
+
+        // 6. Math.log: Get the natural logarithm of a number
+        var logResult = Math.log(10);
+        console.log("Math.log(10):", logResult); // Outputs the natural logarithm of 10.
+
+        // 7. Math.random: Generate a random number between 0 and 1
+        var randomResult = Math.random();
+        console.log("Math.random():", randomResult); // Outputs a random number between 0 and 1.
+
+        // 8. String.prototype.charCodeAt: Get the Unicode of the character at a specific index
+        var charCodeResult = searchString.charCodeAt(0);
+        console.log("String.prototype.charCodeAt():", charCodeResult); // Outputs the Unicode of the first character.
+
+        // 9. String.fromCharCode: Create a string from Unicode values
+        var fromCharCodeResult = String.fromCharCode(72, 101, 108, 108, 111);
+        console.log("String.fromCharCode():", fromCharCodeResult); // Outputs 'Hello'.
+
+        // 10. String.prototype.concat: Concatenate two strings
+        var concatResult = searchString.concat(" Additional string.");
+        console.log("String.prototype.concat():", concatResult); // Outputs the original string concatenated with " Additional string.".
+
+    </script>
+
+</body>
+</html>
+
