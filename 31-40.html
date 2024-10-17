@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document API Demo</title>
+</head>
+<body>
+
+    <h1 id="header">Document API Methods Demo</h1>
+    <p>This page demonstrates various document API calls.</p>
+
+    <button id="normalizeButton">Normalize Document</button>
+
+    <script>
+        // 1. document.isSameNode: Compare if two nodes are the same
+        var headerNode = document.getElementById('header');
+        var sameNodeResult = document.isSameNode(headerNode);
+        console.log("document.isSameNode result:", sameNodeResult); // This will always be false as document and element nodes are different.
+
+        // 2. document.isPrototypeOf: Check if document is a prototype of a node (usually applies to objects)
+        var isPrototypeOfResult = Document.prototype.isPrototypeOf(document);
+        console.log("document.isPrototypeOf result:", isPrototypeOfResult); // True because document inherits from Document.
+
+        // 3. document.lookupNamespaceURI: Find the namespace URI associated with a prefix (this will usually be null for HTML docs)
+        var namespaceURIResult = document.lookupNamespaceURI('html');
+        console.log("document.lookupNamespaceURI result:", namespaceURIResult); // Should return null in standard HTML documents.
+
+        // 4. document.lookupPrefix: Find the prefix associated with a namespace URI (usually null in HTML)
+        var prefixResult = document.lookupPrefix("http://www.w3.org/1999/xhtml");
+        console.log("document.lookupPrefix result:", prefixResult); // Should return null in HTML documents.
+
+        // 5. document.normalize: Normalize the document structure by merging adjacent text nodes
+        var paragraph = document.createTextNode(" This is a     ");
+        var extraText = document.createTextNode("paragraph with extra spaces.");
+        document.body.appendChild(paragraph);
+        document.body.appendChild(extraText);
+        
+        document.getElementById('normalizeButton').onclick = function() {
+            console.log("Before normalization:", document.body.childNodes);
+            document.normalize(); // Merges the adjacent text nodes.
+            console.log("After normalization:", document.body.childNodes);
+        };
+
+        // 6. document.queryCommandEnabled: Check if a command is enabled (this is for execCommand, usually returns false in modern browsers)
+        var isCommandEnabled = document.queryCommandEnabled('bold');
+        console.log("document.queryCommandEnabled result for 'bold':", isCommandEnabled); // Likely false.
+
+        // 7. document.queryCommandState: Check the state of a command (part of execCommand, deprecated in modern browsers)
+        var isCommandStateActive = document.queryCommandState('bold');
+        console.log("document.queryCommandState result for 'bold':", isCommandStateActive); // Likely false.
+
+        // 8. document.removeEventListener: Add an event listener and then remove it
+        function logClick() {
+            console.log("Document clicked");
+        }
+        document.addEventListener('click', logClick);
+        setTimeout(function() {
+            document.removeEventListener('click', logClick);
+            console.log("Removed click event listener");
+        }, 5000); // Removes the event listener after 5 seconds.
+
+        // 9. document.releaseEvents: Release all events captured by the document (deprecated, but demoed for completeness)
+        document.releaseEvents && document.releaseEvents(Event.CLICK); // Only works in legacy browsers.
+
+        // 10. document.toLocaleString: This will output "[object HTMLDocument]" in most cases
+        var documentLocaleString = document.toLocaleString();
+        console.log("document.toLocaleString result:", documentLocaleString); // Outputs "[object HTMLDocument]".
+
+    </script>
+</body>
+</html>
+
