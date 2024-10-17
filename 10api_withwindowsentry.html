@@ -45,14 +45,14 @@
         logApiCall('document.getElementsByClassName');
 
         // Debugging window.onload
-        window.onload = function() {
-            console.log('window.onload triggered');
-            console.trace('Trace from window.onload');  // Log stack trace
+        //window.onload = function() {
+            //console.log('window.onload triggered');
+            //console.trace('Trace from window.onload');  // Log stack trace
 
             // Check if APIs are being called again inside onload
-            const headerInsideOnload = document.getElementById('main-header');
-            logApiCall('document.getElementById (inside window.onload)');
-        };
+            //const headerInsideOnload = document.getElementById('main-header');
+            //logApiCall('document.getElementById (inside window.onload)');
+        //};
     </script>
 </body>
 </html>

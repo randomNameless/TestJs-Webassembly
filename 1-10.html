@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Function Demonstration</title>
+</head>
+<body>
+
+    <h1 id="header">Welcome to the JavaScript Demo</h1>
+    <p class="text">This is a paragraph with class "text".</p>
+    <p class="text">This is another paragraph with class "text".</p>
+    
+    <button id="openWindowBtn">Click to open a new window</button>
+
+    <script>
+        // Runs an alert when the page loads
+        window.onload = function() {
+            window.alert("Welcome! This alert will run when the page loads.");
+        };
+
+        // Get element by ID and modify its text
+        var headerElement = document.getElementById("header");
+        headerElement.textContent = "JavaScript Demonstration in Action!";
+
+        // Get elements by tag name and log their content
+        var paragraphs = document.getElementsByTagName("p");
+        for (var i = 0; i < paragraphs.length; i++) {
+            console.log("Paragraph " + (i+1) + ": " + paragraphs[i].textContent);
+        }
+
+        // Get elements by class name and change their style
+        var textElements = document.getElementsByClassName("text");
+        for (var j = 0; j < textElements.length; j++) {
+            textElements[j].style.color = "blue";
+        }
+
+        // Open a new window when the button is clicked
+        document.getElementById("openWindowBtn").onclick = function() {
+            window.open("https://www.example.com", "_blank");
+        };
+
+        // Use document.writeln and document.open
+        document.open();
+        document.writeln("<p>This text is written using document.writeln()</p>");
+
+        // Run code using window.eval
+        var result = window.eval("5 + 10");
+        console.log("The result of eval('5 + 10') is: " + result);
+
+        // Set an interval to update content periodically
+        var counter = 0;
+        window.setInterval(function() {
+            counter++;
+            document.getElementById("header").textContent = "Counter: " + counter;
+        }, 1000);
+
+    </script>
+</body>
+</html>
+
