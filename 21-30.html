@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Methods Demo</title>
+</head>
+<body>
+
+    <h1 id="header">Document Methods Demo</h1>
+    <p id="paragraph">This is a paragraph element.</p>
+
+    <script>
+        // 1. document.addEventListener: Adds an event listener to the document
+        document.addEventListener('click', function(event) {
+            console.log("Document clicked at position:", event.clientX, event.clientY);
+        });
+
+        // 2. document.createElement: Creates a new element and appends it to the document
+        var newDiv = document.createElement("div");
+        newDiv.textContent = "This is a dynamically created div.";
+        document.body.appendChild(newDiv);
+
+        // 3. document.captureEvents: (Deprecated, but used here for demo)
+        // Captures all mouse events and logs them
+        document.captureEvents(Event.MOUSEMOVE);
+        document.onmousemove = function(event) {
+            console.log("Mouse moved:", event.clientX, event.clientY);
+        };
+
+        // 4. document.elementFromPoint: Gets the element at a specific point (x, y)
+        document.addEventListener('click', function(event) {
+            var element = document.elementFromPoint(event.clientX, event.clientY);
+            console.log("Element at clicked point:", element.tagName);
+        });
+
+        // 5. document.getRootNode: Gets the root node of the document (which is usually the document itself)
+        var rootNode = document.getRootNode();
+        console.log("Root node of the document:", rootNode.nodeName);
+
+        // 6. document.getSelection: Gets the current text selection
+        document.addEventListener('mouseup', function() {
+            var selection = document.getSelection().toString();
+            console.log("Selected text:", selection);
+        });
+
+        // 7. document.hasChildNodes: Checks if the document has child nodes
+        if (document.hasChildNodes()) {
+            console.log("Document has child nodes.");
+        } else {
+            console.log("Document has no child nodes.");
+        }
+
+        // 8. document.hasOwnProperty: Checks if the document has a specific property (in this case, 'title')
+        if (document.hasOwnProperty('title')) {
+            console.log("Document has the 'title' property.");
+        } else {
+            console.log("Document does not have the 'title' property.");
+        }
+
+        // 9. document.isDefaultNamespace: Checks if a namespace is the default one (HTML in this case)
+        if (document.isDefaultNamespace("http://www.w3.org/1999/xhtml")) {
+            console.log("The document is in the default namespace.");
+        } else {
+            console.log("The document is not in the default namespace.");
+        }
+
+        // 10. document.isEqualNode: Compares two nodes for equality (here comparing the document with itself)
+        if (document.isEqualNode(document)) {
+            console.log("The document node is equal to itself.");
+        } else {
+            console.log("The document node is not equal to itself.");
+        }
+
+    </script>
+</body>
+</html>
+
