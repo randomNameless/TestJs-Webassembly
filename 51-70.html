@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Calls Demo</title>
+</head>
+<body>
+
+    <h1>API Calls Demonstration</h1>
+    <p>This page demonstrates various JavaScript API methods.</p>
+    <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000;"></canvas>
+
+    <script>
+        // 1. Array.prototype.indexOf: Find the index of an element in an array
+        const arr = [10, 20, 30, 40];
+        const index = arr.indexOf(30);
+        console.log("Array.prototype.indexOf(30):", index); // Outputs 2.
+
+        // 2. String.prototype.substring: Extract a substring from a string
+        const str = "Hello, World!";
+        const substring = str.substring(7, 12);
+        console.log("String.prototype.substring(7, 12):", substring); // Outputs "World".
+
+        // 3. String.prototype.replace: Replace a part of a string
+        const replacedStr = str.replace("World", "JavaScript");
+        console.log("String.prototype.replace('World', 'JavaScript'):", replacedStr); // Outputs "Hello, JavaScript!".
+
+        // 4. document.write: Writes HTML directly into the document
+        document.write("<p>This paragraph was written using document.write().</p>");
+
+        // 5. escape: Encodes a string
+        const escapedString = escape("Hello, World!");
+        console.log("escape('Hello, World!'):", escapedString); // Outputs "Hello%2C%20World%21".
+
+        // 6. unescape: Decodes an escaped string
+        const unescapedString = unescape(escapedString);
+        console.log("unescape(escapedString):", unescapedString); // Outputs "Hello, World!".
+
+        // 7. navigator.sendBeacon: Sends an asynchronous request to a server
+        const beaconData = new Blob(['{"event":"page_view"}'], { type: 'application/json' });
+        const beaconSent = navigator.sendBeacon('/log', beaconData);
+        console.log("navigator.sendBeacon('/log', beaconData):", beaconSent); // Outputs true or false depending on success.
+
+        // 8. document.cookie: Get and set cookies
+        document.cookie = "username=JohnDoe";
+        console.log("document.cookie:", document.cookie); // Outputs all current cookies.
+
+        // 9. HTMLCanvasElement.prototype.toDataURL: Converts the canvas to a data URL
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'red';
+        ctx.fillRect(10, 10, 100, 100);
+        const dataURL = canvas.toDataURL();
+        console.log("HTMLCanvasElement.prototype.toDataURL():", dataURL); // Outputs the data URL of the canvas.
+
+        // 10. window.atob: Decodes a base64-encoded string
+        const encodedString = btoa("Hello, World!");
+        const decodedString = atob(encodedString);
+        console.log("window.atob(btoa('Hello, World!')):", decodedString); // Outputs "Hello, World!".
+
+        // 11. window.base64ToArrayBuffer: Custom function to convert base64 to ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+        const arrayBuffer = base64ToArrayBuffer(encodedString);
+        console.log("window.base64ToArrayBuffer:", arrayBuffer);
+
+        // 12. window.navigator.msSaveOrOpenBlob: Save or open a blob in IE/Edge (not supported in all browsers)
+        if (window.navigator.msSaveOrOpenBlob) {
+            const blob = new Blob(["Hello, Blob!"], { type: 'text/plain' });
+            window.navigator.msSaveOrOpenBlob(blob, 'hello.txt');
+            console.log("window.navigator.msSaveOrOpenBlob: Blob saved or opened");
+        }
+
+        // 13. window.URL.createObjectURL: Create a URL for a Blob object
+        const blob = new Blob(['Hello, world!'], { type: 'text/plain' });
+        const objectURL = window.URL.createObjectURL(blob);
+        console.log("window.URL.createObjectURL:", objectURL);
+
+        // 14. window.URL.revokeObjectURL: Revoke the URL to free up memory
+        window.URL.revokeObjectURL(objectURL);
+        console.log("window.URL.revokeObjectURL: URL revoked");
+
+        // 15. window.Uint8Array: Creates a typed array (Uint8Array) and fill it
+        const uint8Array = new Uint8Array([10, 20, 30]);
+        console.log("window.Uint8Array:", uint8Array);
+
+        // 16. window.Blob: Create a Blob object from an array
+        const blobFromArray = new Blob([uint8Array], { type: 'application/octet-stream' });
+        console.log("window.Blob:", blobFromArray);
+
+        // 17. Image: Create a new Image object
+        const img = new Image();
+        img.src = 'https://via.placeholder.com/150';
+        document.body.appendChild(img);
+
+        // 18. Image.prototype.src: Set the source of the image
+        img.src = 'https://via.placeholder.com/200';
+        console.log("Image.prototype.src updated:", img.src);
+    </script>
+
+</body>
+</html>
+
