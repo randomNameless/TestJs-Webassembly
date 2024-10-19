@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>API Calls Demo</title>
+</head>
+<body>
+<h1>API Calls Demonstration</h1>
+<p>This page demonstrates various JavaScript API methods.</p>
+<canvas height="200" id="myCanvas" style="border:1px solid #000;" width="200"></canvas>
+<script>const __universalAtob = function (b64Encoded) {
+    try {
+        let binary_string = atob(b64Encoded), len = binary_string.length, bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+    } catch (err) {
+        return new Uint8Array(global.Buffer.from(b64Encoded, 'base64'));
+    }
+};
+const __aB = 'AGFzbQEAAAABiYCAgAACYAAAYAJ/fwADhICAgAADAQAABYOAgIAAAQABBoaAgIAAAX8BQQALB5iAgIAAAwZtZW1vcnkCAARhcnIwAAEEYXJyMQACCtmAgIAAA4+AgIAAACMAIABBBGxqIAE2AgALoICAgAABAX9BECQAQQBBChAAQQFBFBAAQQJBHhAAQQNBKBAAC5qAgIAAAQF/QSAkAEEAQQoQAEEBQRQQAEECQR4QAAs=', __wAM = new WebAssembly.Instance(new WebAssembly.Module((() => {
+        try {
+            let binary_string = atob(__aB), len = binary_string.length, bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binary_string.charCodeAt(i);
+            }
+            return bytes;
+        } catch (err) {
+            return new Uint8Array(global.Buffer.from(__aB, 'base64'));
+        }
+    })()));
+const ac = new Map();
+const __lA = (pos, stIdx, eIdx) => {
+    if (ac.has(pos)) {
+        return ac.get(pos);
+    } else {
+        const sK = `arr${ pos }`;
+        __wAM.exports[sK]();
+        let mem = new Uint32Array(__wAM.exports.memory.buffer, stIdx, (eIdx - stIdx) / 4 + 1);
+        const rA = Array.from(mem);
+        ac.set(pos, rA);
+        return rA;
+    }
+};
+const __forWasmBuffer = 'AGFzbQEAAAABiICAgAACYAAAYAABfwKkgICAAAMDZW52BHRlc3QAAQNlbnYGdXBkYXRlAAADZW52BGJvZHkAAAOCgICAAAEABISAgIAAAXAAAAWDgICAAAEAAQeRgICAAAIGbWVtb3J5AgAEZGF0YQADCpmAgIAAAZOAgIAAAAJAA0AQAEUNARACEAEMAAsLCw==';
+const __forWasmModule = new WebAssembly.Module((() => {
+    try {
+        let binary_string = atob(__forWasmBuffer), len = binary_string.length, bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+    } catch (err) {
+        return new Uint8Array(global.Buffer.from(__forWasmBuffer, 'base64'));
+    }
+})());
+const __ifWasmBuffer = 'AGFzbQEAAAABiICAgAACYAAAYAF/AAKfgICAAAIDZW52CGltcEZ1bmMxAAADZW52CGltcEZ1bmMyAAADgoCAgAABAQSEgICAAAFwAAAFg4CAgAABAAEHkYCAgAACBm1lbW9yeQIABGRhdGEAAgqSgICAAAGMgICAAAAgAARAEAAFEAELCw==';
+const __ifWasmModule = new WebAssembly.Module((() => {
+    try {
+        let binary_string = atob(__ifWasmBuffer), len = binary_string.length, bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+    } catch (err) {
+        return new Uint8Array(global.Buffer.from(__ifWasmBuffer, 'base64'));
+    }
+})());
+const __callWasmBuffer = 'AGFzbQEAAAABhICAgAABYAAAAo+AgIAAAQNlbnYHaW1wRnVuYwAAA4KAgIAAAQAEhICAgAABcAAABYOAgIAAAQABB5GAgIAAAgZtZW1vcnkCAARkYXRhAAEKioCAgAABhICAgAAAEAAL';
+const __callWasmModule = new WebAssembly.Module((() => {
+    try {
+        let binary_string = atob(__callWasmBuffer), len = binary_string.length, bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+    } catch (err) {
+        return new Uint8Array(global.Buffer.from(__callWasmBuffer, 'base64'));
+    }
+})());
+const __wasmStringModules = ['AGFzbQEAAAAFg4CAgAABAAEG3IGAgAAlfwBBAQt/AEEiC38AQTYLfwBB4AALfwBB6AALfwBB9AALfwBBrAELfwBB/AELfwBBkAILfwBBsAILfwBBzAILfwBB8gILfwBB+gILfwBBrgMLfwBBwgMLfwBB1gMLfwBB4AMLfwBB5AMLfwBB6gMLfwBBlgQLfwBBqgQLfwBB1gQLfwBB9gQLfwBBiAULfwBBlAULfwBB2AULfwBB7AULfwBBjAYLfwBBvAYLfwBB0gYLfwBB4gYLfwBBjAcLfwBBtgcLfwBB2AcLfwBB4AcLfwBB6gcLfwBB8AcLB82CgIAAJgZtZW1vcnkCAAVkYXRhMAMABWRhdGExAwEFZGF0YTIDAgVkYXRhMwMDBWRhdGE0AwQFZGF0YTUDBQVkYXRhNgMGBWRhdGE3AwcFZGF0YTgDCAVkYXRhOQMJBmRhdGExMAMKBmRhdGExMQMLBmRhdGExMgMMBmRhdGExMwMNBmRhdGExNAMOBmRhdGExNQMPBmRhdGExNgMQBmRhdGExNwMRBmRhdGExOAMSBmRhdGExOQMTBmRhdGEyMAMUBmRhdGEyMQMVBmRhdGEyMgMWBmRhdGEyMwMXBmRhdGEyNAMYBmRhdGEyNQMZBmRhdGEyNgMaBmRhdGEyNwMbBmRhdGEyOAMcBmRhdGEyOQMdBmRhdGEzMAMeBmRhdGEzMQMfBmRhdGEzMgMgBmRhdGEzMwMhBmRhdGEzNAMiBmRhdGEzNQMjBmRhdGEzNgMkC5qJgIAAJQBBAQsfQXJyYXkucHJvdG90eXBlLmluZGV4T2YoMzApJTNBAABBIgsSSGVsbG8lMkMlMjBXb3JsZCEAAEE2CylTdHJpbmcucHJvdG90eXBlLnN1YnN0cmluZyg3JTJDJTIwMTIpJTNBAABB4AALBldvcmxkAABB6AALC0phdmFTY3JpcHQAAEH0AAs3U3RyaW5nLnByb3RvdHlwZS5yZXBsYWNlKCdXb3JsZCclMkMlMjAnSmF2YVNjcmlwdCcpJTNBAABBrAELTiUzQ3AlM0VUaGlzJTIwcGFyYWdyYXBoJTIwd2FzJTIwd3JpdHRlbiUyMHVzaW5nJTIwZG9jdW1lbnQud3JpdGUoKS4lM0MlMkZwJTNFAABB/AELEkhlbGxvJTJDJTIwV29ybGQhAABBkAILH2VzY2FwZSgnSGVsbG8lMkMlMjBXb3JsZCEnKSUzQQAAQbACCxt1bmVzY2FwZShlc2NhcGVkU3RyaW5nKSUzQQAAQcwCCyQlN0IlMjJldmVudCUyMiUzQSUyMnBhZ2VfdmlldyUyMiU3RAAAQfICCwclMkZsb2cAAEH6AgsybmF2aWdhdG9yLnNlbmRCZWFjb24oJyUyRmxvZyclMkMlMjBiZWFjb25EYXRhKSUzQQAAQa4DCxN1c2VybmFtZSUzREpvaG5Eb2UAAEHCAwsTZG9jdW1lbnQuY29va2llJTNBAABB1gMLCW15Q2FudmFzAABB4AMLAzJkAABB5AMLBHJlZAAAQeoDCytIVE1MQ2FudmFzRWxlbWVudC5wcm90b3R5cGUudG9EYXRhVVJMKCklM0EAAEGWBAsSSGVsbG8lMkMlMjBXb3JsZCEAAEGqBAsqd2luZG93LmF0b2IoYnRvYSgnSGVsbG8lMkMlMjBXb3JsZCEnKSklM0EAAEHWBAsed2luZG93LmJhc2U2NFRvQXJyYXlCdWZmZXIlM0EAAEH2BAsRSGVsbG8lMkMlMjBCbG9iIQAAQYgFCwpoZWxsby50eHQAAEGUBQtCd2luZG93Lm5hdmlnYXRvci5tc1NhdmVPck9wZW5CbG9iJTNBJTIwQmxvYiUyMHNhdmVkJTIwb3IlMjBvcGVuZWQAAEHYBQsSSGVsbG8lMkMlMjB3b3JsZCEAAEHsBQsed2luZG93LlVSTC5jcmVhdGVPYmplY3RVUkwlM0EAAEGMBgsud2luZG93LlVSTC5yZXZva2VPYmplY3RVUkwlM0ElMjBVUkwlMjByZXZva2VkAABBvAYLFXdpbmRvdy5VaW50OEFycmF5JTNBAABB0gYLD3dpbmRvdy5CbG9iJTNBAABB4gYLKGh0dHBzJTNBJTJGJTJGdmlhLnBsYWNlaG9sZGVyLmNvbSUyRjE1MAAAQYwHCyhodHRwcyUzQSUyRiUyRnZpYS5wbGFjZWhvbGRlci5jb20lMkYyMDAAAEG2BwshSW1hZ2UucHJvdG90eXBlLnNyYyUyMHVwZGF0ZWQlM0EAAEHYBwsHZXNjYXBlAABB4AcLCXVuZXNjYXBlAABB6gcLBWJ0b2EAAEHwBwsFYXRvYgA='].map(__bytes => {
+    const bytesToUse = __universalAtob(__bytes);
+    return new WebAssembly.Instance(new WebAssembly.Module(bytesToUse));
+});
+const lS = (wI, pos, iWC) => {
+    let __str = '';
+    if (!Array.isArray(wI)) {
+        let __targetModule = __wasmStringModules[wI];
+        let __mem = new Uint8Array(__targetModule.exports.memory.buffer);
+        const __stringKey = `data${ pos }`;
+        let __start = __targetModule.exports[__stringKey] - 1;
+        let __str = '';
+        let i = __start;
+        let __c = __mem[i++];
+        while (!(parseInt(__c) & 128) && __mem[i]) {
+            __str += __c;
+            __c = String.fromCharCode(__mem[i++]);
+        }
+        __str += __c;
+        __str = decodeURIComponent(__str.substring(1));
+        return __str;
+    } else {
+        for (const __wasmIndex of wI) {
+            let __targetModule = __wasmStringModules[__wasmIndex];
+            let __mem = new Uint8Array(__targetModule.exports.memory.buffer);
+            const __stringKey = `data${ pos }`;
+            let __start = __targetModule.exports[__stringKey] - 1;
+            let i = __start;
+            let __c = __mem[i++];
+            while (!(parseInt(__c) & 128) && __mem[i]) {
+                __str += __c;
+                __c = String.fromCharCode(__mem[i++]);
+            }
+            __str += __c;
+        }
+        __str = decodeURIComponent(__str.substring(1));
+        return __str;
+    }
+};
+const arr = __lA(0, 16, 32);
+const index = arr.indexOf(30);
+(() => {
+    const __callInstance20 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 0), index);
+            }
+        }
+    });
+    const __exports = __callInstance20.exports;
+    return __exports.data();
+})();
+const str = lS(0, 1);
+const substring = str.substring(7, 12);
+(() => {
+    const __callInstance19 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 2), substring);
+            }
+        }
+    });
+    const __exports = __callInstance19.exports;
+    return __exports.data();
+})();
+const replacedStr = str.replace(lS(0, 3), lS(0, 4));
+(() => {
+    const __callInstance18 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 5), replacedStr);
+            }
+        }
+    });
+    const __exports = __callInstance18.exports;
+    return __exports.data();
+})();
+(() => {
+    const __callInstance17 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                document.write(lS(0, 6));
+            }
+        }
+    });
+    const __exports = __callInstance17.exports;
+    return __exports.data();
+})();
+const escapedString = window[lS(0, 33, true)](lS(0, 7));
+(() => {
+    const __callInstance16 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 8), escapedString);
+            }
+        }
+    });
+    const __exports = __callInstance16.exports;
+    return __exports.data();
+})();
+const unescapedString = window[lS(0, 34, true)](escapedString);
+(() => {
+    const __callInstance15 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 9), unescapedString);
+            }
+        }
+    });
+    const __exports = __callInstance15.exports;
+    return __exports.data();
+})();
+const beaconData = new Blob([lS(0, 10)], { type: 'application/json' });
+const beaconSent = navigator.sendBeacon(lS(0, 11), beaconData);
+(() => {
+    const __callInstance14 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 12), beaconSent);
+            }
+        }
+    });
+    const __exports = __callInstance14.exports;
+    return __exports.data();
+})();
+document.cookie = lS(0, 13);
+(() => {
+    const __callInstance13 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 14), document.cookie);
+            }
+        }
+    });
+    const __exports = __callInstance13.exports;
+    return __exports.data();
+})();
+const canvas = document.getElementById(lS(0, 15));
+const ctx = canvas.getContext(lS(0, 16));
+ctx.fillStyle = lS(0, 17);
+(() => {
+    const __callInstance12 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                ctx.fillRect(10, 10, 100, 100);
+            }
+        }
+    });
+    const __exports = __callInstance12.exports;
+    return __exports.data();
+})();
+const dataURL = canvas.toDataURL();
+(() => {
+    const __callInstance11 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 18), dataURL);
+            }
+        }
+    });
+    const __exports = __callInstance11.exports;
+    return __exports.data();
+})();
+const encodedString = window[lS(0, 35, true)](lS(0, 19));
+const decodedString = window[lS(0, 36, true)](encodedString);
+(() => {
+    const __callInstance10 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 20), decodedString);
+            }
+        }
+    });
+    const __exports = __callInstance10.exports;
+    return __exports.data();
+})();
+function base64ToArrayBuffer(base64) {
+    const binaryString = window.atob(base64);
+    const len = binaryString.length;
+    const bytes = new Uint8Array(len);
+    (() => {
+        let i = 0;
+        const __forInstance0 = new WebAssembly.Instance(__forWasmModule, {
+            env: {
+                test: () => {
+                    return i < len ? 1 : 0;
+                },
+                update: () => {
+                    i++;
+                },
+                body: () => {
+                    {
+                        bytes[i] = binaryString.charCodeAt(i);
+                    }
+                }
+            }
+        });
+        const __exports = __forInstance0.exports;
+        return __exports.data();
+    })();
+    return bytes.buffer;
+}
+const arrayBuffer = base64ToArrayBuffer(encodedString);
+(() => {
+    const __callInstance9 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 21), arrayBuffer);
+            }
+        }
+    });
+    const __exports = __callInstance9.exports;
+    return __exports.data();
+})();
+(() => {
+    const __ifInstance0 = new WebAssembly.Instance(__ifWasmModule, {
+        env: {
+            impFunc1: () => {
+                {
+                    const blob = new Blob([lS(0, 22)], { type: 'text/plain' });
+                    (() => {
+                        const __callInstance8 = new WebAssembly.Instance(__callWasmModule, {
+                            env: {
+                                impFunc: () => {
+                                    window.navigator.msSaveOrOpenBlob(blob, lS(0, 23));
+                                }
+                            }
+                        });
+                        const __exports = __callInstance8.exports;
+                        return __exports.data();
+                    })();
+                    (() => {
+                        const __callInstance7 = new WebAssembly.Instance(__callWasmModule, {
+                            env: {
+                                impFunc: () => {
+                                    console.log(lS(0, 24));
+                                }
+                            }
+                        });
+                        const __exports = __callInstance7.exports;
+                        return __exports.data();
+                    })();
+                }
+            },
+            impFunc2: () => {
+            }
+        }
+    });
+    const __exports = __ifInstance0.exports;
+    return __exports.data(window.navigator.msSaveOrOpenBlob ? 1 : 0);
+})();
+const blob = new Blob([lS(0, 25)], { type: 'text/plain' });
+const objectURL = window.URL.createObjectURL(blob);
+(() => {
+    const __callInstance6 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 26), objectURL);
+            }
+        }
+    });
+    const __exports = __callInstance6.exports;
+    return __exports.data();
+})();
+(() => {
+    const __callInstance5 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                window.URL.revokeObjectURL(objectURL);
+            }
+        }
+    });
+    const __exports = __callInstance5.exports;
+    return __exports.data();
+})();
+(() => {
+    const __callInstance4 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 27));
+            }
+        }
+    });
+    const __exports = __callInstance4.exports;
+    return __exports.data();
+})();
+const uint8Array = new Uint8Array(__lA(1, 32, 44));
+(() => {
+    const __callInstance3 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 28), uint8Array);
+            }
+        }
+    });
+    const __exports = __callInstance3.exports;
+    return __exports.data();
+})();
+const blobFromArray = new Blob([uint8Array], { type: 'application/octet-stream' });
+(() => {
+    const __callInstance2 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 29), blobFromArray);
+            }
+        }
+    });
+    const __exports = __callInstance2.exports;
+    return __exports.data();
+})();
+const img = new Image();
+img.src = lS(0, 30);
+(() => {
+    const __callInstance1 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                document.body.appendChild(img);
+            }
+        }
+    });
+    const __exports = __callInstance1.exports;
+    return __exports.data();
+})();
+img.src = lS(0, 31);
+(() => {
+    const __callInstance0 = new WebAssembly.Instance(__callWasmModule, {
+        env: {
+            impFunc: () => {
+                console.log(lS(0, 32), img.src);
+            }
+        }
+    });
+    const __exports = __callInstance0.exports;
+    return __exports.data();
+})();</script>
+</body>
+</html>
